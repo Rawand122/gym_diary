@@ -1,0 +1,7 @@
+{
+  "name": "gym-dairy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
