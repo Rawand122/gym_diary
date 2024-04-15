@@ -5,15 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import {MatCalendar} from "@angular/material/datepicker";
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HomePageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        HomePageRoutingModule,
+        MatCalendar
+    ],
   declarations: [HomePage]
 })
 export class HomePageModule {}

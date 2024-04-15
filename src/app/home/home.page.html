@@ -1,20 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+
+<ng-container *ngIf="!dataLoaded; else homeContent">
+<ion-spinner name="dots"></ion-spinner>
+</ng-container>
+
+<ng-template #homeContent>
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>
+        Gym Diary
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Gym Diary</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <mat-calendar [(selected)]="selectedDate" (selectedChange)="onDateSelected()"  [dateClass]="dateClass()"></mat-calendar>
+  </ion-content>
+</ng-template>

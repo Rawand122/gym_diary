@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'workout-entry',
+    loadChildren: () => import('./workout-entry/workout-entry.module').then( m => m.WorkoutEntryPageModule)
+  },
+  {
+    path: 'day-details',
+    loadChildren: () => import('./day-details/day-details.module').then( m => m.DayDetailsPageModule)
+  },
 ];
 
 @NgModule({
