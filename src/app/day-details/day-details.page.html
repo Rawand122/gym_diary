@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateBackHome()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Day Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-card>
+    <ion-card-content>
+      <p>Date: {{ date | date: 'EEEE d MMM y' }}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="savedWorkouts.length > 0">
+    <ion-card-header>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-card *ngFor="let workout of savedWorkouts">
+          <ion-card-header class="workout-headers">
+           {{ workout.title }}
+          </ion-card-header>
+            <ion-card-content class="workout-content">
+              <p>{{ workout.description }}</p>
+            </ion-card-content>
+        </ion-card>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="savedWorkouts.length === 0">
+    <ion-card-content>
+      No saved workouts for this date.
+    </ion-card-content>
+  </ion-card>
+
+<ion-content class="custom-background">
+  <ion-card>
+    <ion-card-content class="add-workout-but">
+      <ion-button  (click)="navigateToWorkoutEntryPage()">Add Workout</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

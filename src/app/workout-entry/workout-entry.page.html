@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateBackToDayDetails()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Workout Entry
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-background">
+
+  <ion-list>
+    <!-- Workout Type Selection -->
+    <ion-row class="radio-group">
+      <ion-col size="6">
+        <ion-radio-group [(ngModel)]="selectedWorkoutType">
+          <ion-label class="radio-label">Predefined Workout</ion-label>
+          <ion-radio slot="start" value="predefined"></ion-radio>
+        </ion-radio-group>
+      </ion-col>
+      <ion-col size="6">
+        <ion-radio-group [(ngModel)]="selectedWorkoutType">
+          <ion-label class="radio-label">Custom Workout</ion-label>
+          <ion-radio slot="start" value="custom"></ion-radio>
+        </ion-radio-group>
+      </ion-col>
+    </ion-row>
+
+    <ion-item *ngIf="selectedWorkoutType === 'predefined'">
+
+      <ion-select label="Choose a Predefined Workout"  labelPlacement="stacked" [(ngModel)]="selectedPredefinedWorkout"  (ionChange)="onPredefinedWorkoutChange()">
+        <ion-select-option *ngFor="let workout of customWorkouts" [value]="workout">{{ workout.title }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item> <ion-input label="Enter Workout Title" labelPlacement="stacked" type="text" [(ngModel)]="customWorkoutTitle"></ion-input> </ion-item>
+    <ion-item> <ion-textarea label="Enter Workout Description" labelPlacement="stacked" [(ngModel)]="workoutDescription" rows="5"></ion-textarea> </ion-item>
+  <ion-item><ion-checkbox [(ngModel)]="saveAsCustomWorkout">Save as Custom Workout</ion-checkbox> </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" (click)="saveWorkout()">Save Workout</ion-button>
+</ion-content>
